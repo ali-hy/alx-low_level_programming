@@ -22,6 +22,7 @@ void jack_bauer(void)
 		for (j = 0; j < 60; j++)
 		{
 			print_two_digits(i);
+			_putchar(':');
 			print_two_digits(j);
 			_putchar('\n');
 		}
