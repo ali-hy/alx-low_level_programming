@@ -2,6 +2,22 @@
 #include "main.h"
 
 /**
+ * sign - get sign of an integer
+ * @n: any integer
+ *
+ * Return: -1 if negative, 0 if 0, 1 if positive
+ */
+int sign(int n)
+{
+	if (n < 0)
+		return (-1);
+	if (n > 0)
+		return (1);
+
+	return (0;)
+}
+
+/**
  * print_to_98 - print all natural numbers from n to 98
  * @n: any integer
  */
