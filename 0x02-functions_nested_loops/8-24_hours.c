@@ -3,6 +3,7 @@
 
 /**
  * print_two_digits - prints ints as 2 digits
+ * @n: any valid int
  */
 void print_two_digits(int n)
 {
