@@ -7,10 +7,10 @@
  */
 void print_to_98(int n)
 {
-	int i, sign = sign(98 - n);
-	for (i = n; i != 98; i += sign)
+	int i, step = sign(98 - n);
+	for (i = n; i != 98; i += step)
 	{
 		printf("%d, ", i);
 	}
-	printf("%d", 98)
+	printf("%d", 98);
 }
