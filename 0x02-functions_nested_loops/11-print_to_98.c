@@ -24,6 +24,7 @@ int sign(int n)
 void print_to_98(int n)
 {
 	int i, step = sign(98 - n);
+
 	for (i = n; i != 98; i += step)
 	{
 		printf("%d, ", i);
