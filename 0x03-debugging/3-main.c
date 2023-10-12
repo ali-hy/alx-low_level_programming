@@ -10,18 +10,27 @@
 int main(void)
 {
 	int month;
-	int day;
+	int day, tempday;
 	int year;
+	int i;
 
-	month = 2;
-	day = 29;
-	year = 2000;
+	int years[] = {2023, 2024, 2100, 2400};
 
-	printf("Date: %02d/%02d/%04d\n", month, day, year);
+	for (i = 0; i < 4; i++)
+	{
+		year = years[i];
+		printf("\n======== %d ==========\n", year);
+		for (month = 1; month <= 12; month++)
+			for (day = 1; day <= 31; day++)
+			{
+				printf("Date: %02d/%02d/%04d\n", month, day, year);
 
-	day = convert_day(month, day);
+				tempday = convert_day(month, day);
 
-	print_remaining_days(month, day, year);
+				print_remaining_days(month, tempday, year);
+				printf("\n");
+			}
+	}
 
 	return (0);
 }
