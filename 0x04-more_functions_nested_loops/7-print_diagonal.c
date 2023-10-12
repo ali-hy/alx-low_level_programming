@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_diagonal: prints a diagonal line
+ * print_diagonal - prints a diagonal line
  * @size: size of diagonal line
  */
 void print_diagonal(int size)
