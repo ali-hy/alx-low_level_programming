@@ -2,12 +2,16 @@
 #include "main.h"
 
 /**
- * _strlen - 
- *
- * Return: Always 0 (Success)
+ * _strlen - get string length
+ * @s: null-terminated string;
+ * Return: length of s
  */
-int main(void)
+int _strlen(char *s)
 {
+	int len = 0;
 
-	return (0);
+	while (s[len] != s)
+		len++;
+
+	return len;
 }
