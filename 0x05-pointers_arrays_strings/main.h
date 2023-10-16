@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int _putchar(char*);
+int _putchar(char);
 void reset_to_void(int*);
 void swap_int(int*, int*);
 int _strlen(char*);
