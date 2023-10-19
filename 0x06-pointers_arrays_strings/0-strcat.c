@@ -7,7 +7,7 @@
  * @src: string to concat
  * Return: dest
  */
-char *_strcat(char *dest, char *src);
+char *_strcat(char *dest, char *src)
 {
 	int i = 0, j = 0;
 
@@ -16,14 +16,14 @@ char *_strcat(char *dest, char *src);
 		i++;
 	}
 
-	while (src[i] != '\0')
+	while (src[j] != '\0')
 	{
-		dest[i] = src[i];
+		dest[i] = src[j];
 		i++;
 		j++;
 	}
 
-	dest[i] = src[i];
+	dest[i] = src[j];
 
 	return (dest);
 }
