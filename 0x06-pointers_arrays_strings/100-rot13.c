@@ -8,13 +8,21 @@
  */
 char *rot13(char *s)
 {
-	int i;
+	char *letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	int i, j, isCaps;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+		for (j = 0; letters[j] != '\0'; j++)
 		{
-			
+			if (s[i] == letters[j])
+			{
+				isCaps = j >= 26;
+				s[i] = letters[(j + 13) % 26 + (isCaps * 26)];
+				break;
+			}
 		}
 	}
+
+	return (s);
 }
