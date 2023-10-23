@@ -13,8 +13,8 @@ void print_diagsums(int *a, int size)
 
 	for(i = 0; i < size; i++)
 	{
-		pd += a[i][i];
-		nd += a[size - i - 1][i];
+		pd += (a + i)[i];
+		nd += (a + size - i - 1)[i];
 	}
 
 	printf("%d, %d\n", pd, nd);
