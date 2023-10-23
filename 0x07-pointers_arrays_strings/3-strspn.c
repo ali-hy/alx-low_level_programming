@@ -13,6 +13,9 @@ unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int i, j, is_prefix;
 
+	if (s[0] == '\0')
+		return 0;
+
 	for (i = 0; is_prefix && s[i] != '\0'; i++)
 	{
 		is_prefix = 0;
