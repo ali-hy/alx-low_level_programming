@@ -11,13 +11,13 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	int i, j, is_prefix;
+	unsigned int i, j, is_prefix;
 
 	for (i = 0; is_prefix && s[i] != '\0'; i++)
 	{
 		is_prefix = 0;
 
-		for (j = 0; accept[j] != '\0'; i++)
+		for (j = 0; accept[j] != '\0'; j++)
 		{
 			if (accept[j] == s[i])
 			{
@@ -26,4 +26,6 @@ unsigned int _strspn(char *s, char *accept)
 			}
 		}
 	}
+
+	return (i - 1);
 }
