@@ -15,7 +15,7 @@ int divisible_by(int n, int x)
 	if (n % x == 0)
 		return (1);
 
-	return (divisible_by(n, x + 1);
+	return (divisible_by(n, x + 1));
 }
 
 /**
@@ -25,5 +25,7 @@ int divisible_by(int n, int x)
  */
 int is_prime_number(int n)
 {
-	return (!divisible_by(n, 0));
+	if (n <= 1)
+		return 0;
+	return (divisible_by(n, 2) == 0 ? 1 : 0);
 }
