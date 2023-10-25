@@ -14,7 +14,7 @@ int _sqrt(int target, int x)
 	if (x * x > target)
 		return -1;
 
-	return (_sqrt(target, x + 1))
+	return (_sqrt(target, x + 1));
 }
 
 /**
