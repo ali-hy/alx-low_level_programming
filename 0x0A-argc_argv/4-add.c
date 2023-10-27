@@ -9,7 +9,7 @@
 int digits_only(char *s)
 {
 	int i;
-	
+
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] < '0' || s[i] > '9')
@@ -30,7 +30,7 @@ int digits_only(char *s)
 int main(int argc, char *argv[])
 {
 	int i, res = 0;
-	
+
 	if (argc < 2)
 	{
 		printf("0\n");
