@@ -40,7 +40,7 @@ char *argstostr(int ac, char **av)
 		total_size += _strlen(av[i]);
 	}
 
-	res = malloc(sizeof(char) * (total_size + ac));
+	res = malloc(sizeof(char) * (total_size + ac + 1));
 	if (res == NULL)
 		return (NULL);
 
