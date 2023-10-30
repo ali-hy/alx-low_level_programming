@@ -30,7 +30,7 @@ int _strlen(char *s)
 char *argstostr(int ac, char **av)
 {
 	int total_size = 0, i, j, k = 0;
-	char **res;
+	char *res;
 
 	for (i = 0; i < ac; i++)
 	{
