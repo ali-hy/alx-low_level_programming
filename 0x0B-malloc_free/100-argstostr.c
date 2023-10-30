@@ -32,6 +32,9 @@ char *argstostr(int ac, char **av)
 	int total_size = 0, i, j, k = 0;
 	char *res;
 
+	if (ac == 0 || av[0] == NULL)
+		return (NULL);
+
 	for (i = 0; i < ac; i++)
 	{
 		total_size += _strlen(av[i]);
