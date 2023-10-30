@@ -39,15 +39,13 @@ char *argstostr(int ac, char **av)
 
 	res = malloc(sizeof(char) * (total_size + ac - 1));
 	if (res == NULL)
-	{
 		return (NULL);
-	}
 
 	for (i = 0; i < ac; i++)
 	{
 		for (j = 0; av[i][j] != '\0'; j++, k++)
 		{
-			 res[k] = av[i][j];
+			res[k] = av[i][j];
 		}
 		res[k] = '\n';
 		k++;
