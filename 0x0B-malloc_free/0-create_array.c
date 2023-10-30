@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * crate_array - creates a char array and initializes it with a char
+ * create_array - creates a char array and initializes it with a char
  * @size: size of the array
  * @c: character to fill the array with
  * Return: pointer to array
@@ -13,7 +13,7 @@ char *create_array(unsigned int size, char c)
 	char *res;
 
 	if (size == 0)
-		return NULL;
+		return (NULL);
 
 	res = malloc(sizeof(char) * size);
 	if (res == NULL)
@@ -26,5 +26,5 @@ char *create_array(unsigned int size, char c)
 		res[i] = c;
 	}
 
-	return res;
+	return (res);
 }
