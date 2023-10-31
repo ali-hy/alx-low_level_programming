@@ -25,6 +25,7 @@ char **strtow(char *str)
 		}
 	}
 
+	printf("counted %d words. allocating res.\n", wc);
 	res = malloc(sizeof(char *) * wc);
 	if (res == NULL)
 	{
