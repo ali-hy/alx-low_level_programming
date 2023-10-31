@@ -58,6 +58,7 @@ char **strtow(char *str)
 		for (j = word_start; j < i; j++)
 		{
 			res[word][j - word_start] = str[j];
+			printf("res[%d][%d] = %c\n", word, j - word_start);
 		}
 	}
 
