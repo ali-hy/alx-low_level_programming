@@ -31,6 +31,7 @@ char **strtow(char *str)
 	{
 		return (NULL);
 	}
+	printf("allocated res, successfully\n");
 
 	for (i = 0, word = 0, j = 0; i != '\0'; word++)
 	{
