@@ -8,7 +8,7 @@
  */
 char **strtow(char *str)
 {
-	int i, j, word_start, word, in_word = 0, wc = 0;
+	int i, j, word_size, word_start, word, in_word = 0, wc = 0;
 	char **res;
 
 	for (i = 0; str[i] != '\0'; i++)
