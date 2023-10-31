@@ -1,4 +1,4 @@
-#include <stdio.h> 
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -62,7 +62,7 @@ char **strtow(char *str)
 		res[word] = malloc(sizeof(char) * word_size);
 		if (res[word] == NULL)
 		{
-			while(word--)
+			while (word--)
 				free(res[word]);
 
 			free(res);
@@ -70,9 +70,7 @@ char **strtow(char *str)
 		}
 
 		for (j = word_start; j < i; j++)
-		{
 			res[word][j - word_start] = str[j];
-		}
 	}
 
 	return (res);
