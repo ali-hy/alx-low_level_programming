@@ -1,15 +1,14 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include "main.h"
 
 /**
- * strtow - split a string into words
- * @str: strings
- * Return: array of the words from string
+ * count_words - count the words in a string
+ * @str: string
+ * Return: number of words in string
  */
-char **strtow(char *str)
+int count_words(char *str)
 {
-	int i, j, word_size, word_start, word, in_word = 0, wc = 0;
-	char **res;
+	int word_size, in_word = 0, wc = 0;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -25,24 +24,34 @@ char **strtow(char *str)
 		}
 	}
 
-	printf("counted %d words. allocating res.\n", wc);
-	res = malloc(sizeof(char *) * wc);
+	return (wc);
+}
+
+/**
+ * strtow - split a string into words
+ * @str: string
+ * Return: array of the words from string
+ */
+char **strtow(char *str)
+{
+	int i, j, word_size, word_start, word, in_word = 0, wc = 0;
+	char **res;
+
+	wc = count_words(str);
+
+	res = malloc(sizeof(char *) * (wc + 1));
 	if (res == NULL)
 	{
 		return (NULL);
 	}
-	printf("allocated res, successfully\n");
 
-	for (i = 0, word = 0, j = 0; str[i] != '\0'; word++)
+	for (i = 0, word = 0, j = 0; word < wc; word++)
 	{
-		printf("word #%d\n----------------\n", word);
 		while (str[i] == ' ')
 			i++;
 
 		if (str[i] == '\0')
 			break;
-
-		printf("found word start at %d\n", i);
 
 		word_start = i;
 
@@ -63,7 +72,6 @@ char **strtow(char *str)
 		for (j = word_start; j < i; j++)
 		{
 			res[word][j - word_start] = str[j];
-			printf("res[%d][%d] = %c\n", word, j - word_start, str[j]);
 		}
 	}
 
