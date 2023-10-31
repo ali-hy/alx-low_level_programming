@@ -39,7 +39,7 @@ char **strtow(char *str)
 
 	wc = count_words(str);
 
-	if(wc == 0)
+	if (wc == 0)
 		return (NULL);
 
 	res = malloc(sizeof(char *) * (wc + 1));
