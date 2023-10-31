@@ -8,7 +8,7 @@
  */
 int count_words(char *str)
 {
-	int word_size, in_word = 0, wc = 0;
+	int i, in_word = 0, wc = 0;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -34,16 +34,14 @@ int count_words(char *str)
  */
 char **strtow(char *str)
 {
-	int i, j, word_size, word_start, word, in_word = 0, wc = 0;
+	int i, j, word_size, word_start, word, wc = 0;
 	char **res;
 
 	wc = count_words(str);
 
 	res = malloc(sizeof(char *) * (wc + 1));
 	if (res == NULL)
-	{
 		return (NULL);
-	}
 
 	for (i = 0, word = 0, j = 0; word < wc; word++)
 	{
