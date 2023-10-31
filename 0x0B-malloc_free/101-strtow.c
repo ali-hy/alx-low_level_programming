@@ -35,9 +35,11 @@ char **strtow(char *str)
 	{
 		while (str[i] == ' ')
 			i++;
-		
+
 		if (str[i] == '\0')
 			break;
+
+		printf("found word start at %d\n", i);
 
 		word_start = i;
 
