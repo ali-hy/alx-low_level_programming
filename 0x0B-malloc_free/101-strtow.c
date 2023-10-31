@@ -59,7 +59,7 @@ char **strtow(char *str)
 		while (str[i] != ' ' && str[i] != '\0')
 			i++;
 
-		word_size = 2 + i - word_start;
+		word_size = 1 + i - word_start;
 		res[word] = malloc(sizeof(char) * word_size);
 		if (res[word] == NULL)
 		{
@@ -73,6 +73,5 @@ char **strtow(char *str)
 		for (j = word_start; j < i; j++)
 			res[word][j - word_start] = str[j];
 	}
-
-	return (res);
+return (res);
 }
