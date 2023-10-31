@@ -35,6 +35,7 @@ char **strtow(char *str)
 
 	for (i = 0, word = 0, j = 0; i != '\0'; word++)
 	{
+		printf("word #%d\n----------------\n", word);
 		while (str[i] == ' ')
 			i++;
 
