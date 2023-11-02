@@ -2,8 +2,8 @@
 #include "main.h"
 
 /**
- * realloc - reallocates memory and attempts to change its size
- * @buffer: ptr to allocated memeory
+ * _realloc - reallocates memory and attempts to change its size
+ * @ptr: ptr to allocated memeory
  * @old_size: old size of buffer
  * @new_size: size of buffer after resize
  * Return: pointer to newly allocated memory
@@ -22,7 +22,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 
 	if (old_size == new_size)
-		return ptr;
+		return (ptr);
 
 	res = malloc(new_size);
 	if (res == NULL)
@@ -33,7 +33,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	for (; i < new_size; i++)
 		res[i] = 0;
-	
+
 	free(ptr);
 
 	return (res);
