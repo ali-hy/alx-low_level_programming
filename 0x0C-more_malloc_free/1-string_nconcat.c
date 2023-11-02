@@ -9,9 +9,9 @@
  * Return: ptr to newly allocated memory with s1 followed by the first n bytes
  * s2
  */
-char *string_nconcat(char *s1, char *s2, int n)
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int i, j, len1, len2;
+	unsigned int i, j, len1, len2;
 	char *res;
 	
 	if (s1 == NULL)
