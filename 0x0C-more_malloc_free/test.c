@@ -8,14 +8,7 @@
  */
 int main(void)
 {
-	void *ptr = malloc(sizeof(char) * 10);
-	char *lptr = malloc(sizeof(char) * 10);
-
-	if (ptr == NULL)
-		return (1);
-
-	printf("void ptr: %ld\n", sizeof(*ptr));
-	printf("char ptr: %ld\n", sizeof(lptr));
+	printf("%ld\n", sizeof(char));
 
 	return (0);
 }
