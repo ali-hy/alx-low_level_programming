@@ -6,7 +6,7 @@
  * has a size of `size`
  * @nmemb: number of members
  * @size: size of each member
- * Retrun: pointer to allocated memory
+ * Return: pointer to allocated memory
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
@@ -15,7 +15,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	if (total_size == 0)
 		return (NULL);
-	
+
 	res = malloc(nmemb * size);
 	if (res == NULL)
 		return (NULL);
