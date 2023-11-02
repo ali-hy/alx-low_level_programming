@@ -30,8 +30,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (ptr == NULL)
 		return (res);
-
-	if (ptr != NULL)
+	else
 	{
 		for (i = 0; i < smaller_size; i++)
 			res[i] = ptr_c[i];
