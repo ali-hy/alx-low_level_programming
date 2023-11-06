@@ -51,5 +51,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 	d->age = age;
 	d->owner = strcp(owner);
 
+	if (d->name == NULL)
+		return (NULL);
+	
+	if (d->owner == NULL)
+		return (NULL);
 	return (d);
 }
