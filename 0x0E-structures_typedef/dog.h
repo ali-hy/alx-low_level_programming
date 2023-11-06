@@ -1,10 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-typedef struct {
+typedef struct dog {
 	char *name;
 	float age;
 	char *owner;
-}
+} dog;
 
 #endif /* MAIN_H */
