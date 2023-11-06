@@ -29,6 +29,8 @@ char *strcp(char *str)
 		res[i] = str[i];
 	}
 
+	res[i] = '\0';
+
 	return (res);
 }
 
@@ -52,9 +54,12 @@ dog_t *new_dog(char *name, float age, char *owner)
 	d->owner = strcp(owner);
 
 	if (d->name == NULL)
+		free(d);
 		return (NULL);
-	
+
 	if (d->owner == NULL)
+		free(d);
 		return (NULL);
+
 	return (d);
 }
