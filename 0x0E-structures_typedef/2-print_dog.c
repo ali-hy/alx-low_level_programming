@@ -23,7 +23,7 @@ void print_dog(struct dog *d)
 {
 	if (d == NULL)
 		return;
-	
+
 	printf("Name: %s\nAge: %.6f\nOwner: %s\n",
 			nin(d->name), d->age, nin(d->owner));
 }
