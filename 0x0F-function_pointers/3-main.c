@@ -5,9 +5,9 @@
 
 /**
  * main - entry point
- * @argc - argument count
- * @argv - argument array
- * Return: Always 0 (Success)
+ * @argc: argument count
+ * @argv: argument array
+ * Return: 0 on success. 98+ on failure.
  */
 int main(int argc, char **argv)
 {
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		printf("ERROR\n");
 		return (99);
 	}
-	
+
 	if ((argv[1][0] == '%' || argv[1][0] == '/') && num2 == 0)
 	{
 		printf("ERROR\n");
