@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
 	if (argc != 4)
 	{
-		printf("ERROR\n");
+		printf("Error\n");
 		return (98);
 	}
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 
 	if (op_f == NULL)
 	{
-		printf("ERROR\n");
+		printf("Error\n");
 		return (99);
 	}
 
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
 	if ((strcmp(argv[2], "%") == 0 || strcmp(argv[2], "/") == 0) && (num2 == 0))
 	{
-		printf("ERROR\n");
+		printf("Error\n");
 		return (100);
 	}
 
