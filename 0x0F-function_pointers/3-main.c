@@ -22,7 +22,6 @@ int main(int argc, char **argv)
 
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
-
 	op_f = get_op_func(argv[2]);
 
 	if (op_f == NULL)
@@ -31,7 +30,7 @@ int main(int argc, char **argv)
 		return (99);
 	}
 
-	if ((argv[2][0] == '%' || argv[2][0] == '/') && num2 == 0)
+	if ((strcmp(argv[2], "%") || strcmp(argv[2], "/")) && num2 == 0)
 	{
 		printf("ERROR\n");
 		return (100);
