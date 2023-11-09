@@ -37,12 +37,7 @@ void print_nextf(va_list list)
 void print_nexts(va_list list)
 {
 	char *s = va_arg(list, char *);
-	if (s == NULL)
-	{
-		printf("(nil)");
-		return;
-	}
-	printf("%s", s);
+	printf("%s", s == NULL ? "(nil)" : s;
 }
 
 /**
@@ -82,8 +77,12 @@ void print_all(const char *format, ...)
 			continue;
 		}
 		curr_func(elements);
+		if (format[i + 1] != '\0')
+			printf(", ");
+
 		i++;
 	}
+
 	printf("\n");
 	va_end(elements);
 }
