@@ -70,7 +70,7 @@ void print_all(const char *format, ...)
 
 	va_start(elements, format);
 	i = 0;
-	while (format[i] != '\0')
+	while (format && format[i] != '\0')
 	{
 		code = format[i];
 
