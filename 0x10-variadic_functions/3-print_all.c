@@ -7,6 +7,7 @@
 void print_nextc(va_list list)
 {
 	int c = va_arg(list, int);
+
 	printf("%c", (char)c);
 }
 
@@ -17,6 +18,7 @@ void print_nextc(va_list list)
 void print_nexti(va_list list)
 {
 	int i = va_arg(list, int);
+
 	printf("%i", i);
 }
 
@@ -27,6 +29,7 @@ void print_nexti(va_list list)
 void print_nextf(va_list list)
 {
 	double f = va_arg(list, double);
+
 	printf("%f", (float)f);
 }
 
@@ -37,6 +40,7 @@ void print_nextf(va_list list)
 void print_nexts(va_list list)
 {
 	char *s = va_arg(list, char *);
+
 	printf("%s", s == NULL ? "(nil)" : s);
 }
 
@@ -69,7 +73,7 @@ void print_all(const char *format, ...)
 	while (format[i] != '\0')
 	{
 		code = format[i];
-		
+
 		curr_func = p_func[(int)code];
 		if (curr_func == NULL)
 		{
