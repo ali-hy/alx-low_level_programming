@@ -37,7 +37,7 @@ void print_nextf(va_list list)
 void print_nexts(va_list list)
 {
 	char *s = va_arg(list, char *);
-	printf("%s", s == NULL ? "(nil)" : s;
+	printf("%s", s == NULL ? "(nil)" : s);
 }
 
 /**
