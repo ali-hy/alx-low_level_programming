@@ -1,39 +1,46 @@
-#include "variadic_functions.c"
+#include "variadic_functions.h"
 
 /**
- * print_c - print a char
- * @c: char
+ * print_nextc - ...
+ * @list: ...
  */
-void print_c(char c)
+void print_nextc(va_list list)
 {
-	printf("%c", c);
+	int c = va_arg(list, int);
+	printf("%c", (char)c);
 }
 
 /**
- * print_i - print an int
- * @i: int
+ * print_nexti - ...
+ * @list: ...
  */
-void print_i(int i)
+void print_nexti(va_list list)
 {
+	int i = va_arg(list, int);
 	printf("%i", i);
 }
 
 /**
- * print_f - print a float
- * @f: float
+ * print_nextf - ...
+ * @list: ...
  */
-void print_f(float f)
+void print_nextf(va_list list)
 {
-	printf("%f", f);
+	double f = va_arg(list, double);
+	printf("%f", (float)f);
 }
 
 /**
- * print_s - print a string
- * @s: string
+ * print_nexts - ...
+ * @list: ...
  */
-void print_s(char *s)
+void print_nexts(va_list list)
 {
-	printf("%s", s);
+	char *s = va_arg(list, char *);
+	if (s == NULL)
+		printf("(nil)");
+	else
+		printf("%s", s);
 }
 
 /**
@@ -43,33 +50,38 @@ void print_s(char *s)
  */
 void print_all(const char *format, ...)
 {
-	int i = 0, j = 0;
+	int i = 0;
 	char code;
-	void (*p_func[256])(void);
-	void (*curr_func)(void);
+	void (*p_func[256])(va_list);
+	void (*curr_func)(va_list);
 	va_list elements;
 
 	while (i < 256)
+	{
 		p_func[i] = NULL;
+		i++;
+	}
 
-	p_func['c'] = print_c;
-	p_func['i'] = print_i;
-	p_func['f'] = print_f;
-	p_func['s'] = print_s;
+	p_func['c'] = print_nextc;
+	p_func['i'] = print_nexti;
+	p_func['f'] = print_nextf;
+	p_func['s'] = print_nexts;
 
-	va_start(elements, 10);
+	va_start(elements, format);
+	i = 0;
 	while (format[i] != '\0')
 	{
 		code = format[i];
 		
-		curr_func = p_func[code];
+		curr_func = p_func[(int)code];
 		if (curr_func == NULL)
 		{
 			i++;
 			continue;
 		}
-		curr_func(va_arg(elements, void));
+		curr_func(elements);
 		i++;
 	}
+	printf("\n");
 	va_end(elements);
 }
