@@ -24,6 +24,11 @@ list_t *add_node(list_t **head, const char *str)
 		res->next = *head;
 		*head = res;
 	}
+	else
+	{
+		free(res);
+		return (NULL);
+	}
 
 	return (res);
 }
