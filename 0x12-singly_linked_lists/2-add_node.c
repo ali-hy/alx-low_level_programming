@@ -13,11 +13,12 @@ list_t *add_node(list_t **head, const char *str)
 	if (res == NULL)
 		return (NULL);
 
-	res->str = str == NULL ? NULL : strdup(str);
+	res->str = strdup(str);
 	res->len = 0;
 
-	while ((res->str[res->len]) != '\0')
-		res->len++;
+	if (res->str != NULL)
+		while ((res->str[res->len]) != '\0')
+			res->len++;
 
 	if (head != NULL)
 	{
