@@ -19,8 +19,15 @@ list_t *add_node(list_t **head, const char *str)
 	while ((res->str[res->len]) != '\0')
 		res->len++;
 
-	res->next = *head;
-	head = &res;
+	if (head != NULL)
+	{
+		res->next = *head;
+		*head = res;
+	}
+	else
+	{
+		return (NULL);
+	}
 
 	return (res);
 }
