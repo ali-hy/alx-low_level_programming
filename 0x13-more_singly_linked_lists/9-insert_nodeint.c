@@ -28,19 +28,23 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		return (new_node);
 	}
 
+	printf("I starts as: %d\n", i);
+
 	prev_node = *head;
 	while (prev_node != NULL)
 	{
-		if (i++ == idx)
+		if (i == idx)
 		{
 			if (prev_node->next != NULL)
-				next_node = prev_node->next->next;
+				next_node = prev_node->next;
 			else
 				next_node = NULL;
 			prev_node->next = new_node;
 			new_node->next = next_node;
 			return (new_node);
 		}
+		prev_node = prev_node->next;
+		i++;
 	}
 
 	free(new_node);
