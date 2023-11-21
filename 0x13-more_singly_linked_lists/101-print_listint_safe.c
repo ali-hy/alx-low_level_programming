@@ -17,6 +17,7 @@ const listint_t **push(const listint_t **list, unsigned int size,
 	if (res == NULL)
 	{
 		free(list);
+		free(res);
 		exit(98);
 	}
 
@@ -25,7 +26,10 @@ const listint_t **push(const listint_t **list, unsigned int size,
 
 	res[i] = item;
 	if (list != NULL)
+	{
+		printf("freeing list (new size: %d)\n", size);
 		free(list);
+	}
 	return (res);
 }
 
@@ -45,6 +49,7 @@ size_t print_listint_safe(const listint_t *h)
 			for (i = 0; i < count; i++)
 				if (prev[i] == curr)
 				{
+					free(prev);
 					printf("-> [%p] %d\n", (void *)curr, curr->n);
 					printf("(nil), (nil)\n");
 					return (count);
