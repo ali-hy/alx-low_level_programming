@@ -46,6 +46,7 @@ size_t print_listint_safe(const listint_t *h)
 				if (prev[i] == curr)
 				{
 					printf("-> [%p] %d\n", (void *)curr, curr->n);
+					printf("(nil), (nil)\n");
 					return (count);
 				}
 
