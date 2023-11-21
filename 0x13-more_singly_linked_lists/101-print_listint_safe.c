@@ -58,6 +58,7 @@ size_t print_listint_safe(const listint_t *h)
 		curr = curr->next;
 	}
 
-	free(prev);
+	if (prev != NULL)
+		free(prev);
 	return (count);
 }
