@@ -1,50 +1,34 @@
 #include "main.h"
 
 /**
- * safe_close - close file descriptor, but exit program if failed
- * @fd1: first file descriptor
- * @fd2: second file descriptor
- */
-void safe_close(int fd1, int fd2)
-{
-	if (fd1 > -1)
-		if (close(fd1) == -1)
-		{
-			dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd1);
-			exit(100);
-		}
-	if (fd2 > -1)
-		if (close(fd2) == -1)
-		{
-			dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd2);
-			exit(100);
-		}
-}
-
-/**
  * reading_err - handle file reading error
  * @file_name: name of file failed to read from
- * @fd1: file descriptor of first file to close
- * @fd2: file descriptor of second file to close
  */
-void reading_err(char *file_name, int fd1, int fd2)
+void reading_err(char *file_name)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", file_name);
-	safe_close(fd1, fd2);
-	exit(98);
 }
 
 /**
  * writing_err - handle file reading error
  * @file_name: name of file failed to write to
- * @fd1: file descriptor of first file to close
- * @fd2: file descriptor of second file to close
  */
-void writing_err(char *file_name, int fd1, int fd2)
+void writing_err(char *file_name)
 {
 	dprintf(STDOUT_FILENO, "Error: Can't write to file %s\n", file_name);
-	safe_close(fd1, fd2);
-	exit(99);
+}
+
+/**
+ * safe_close - close file discriptor, but exit program if failed
+ * @file_discriptor: file discriptor of file to close
+ */
+void safe_close(int file_discriptor)
+{
+	if (close(file_discriptor) == -1)
+	{
+		dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", file_discriptor);
+		exit(100);
+	}
 }
 
 /**
@@ -55,6 +39,7 @@ void writing_err(char *file_name, int fd1, int fd2)
  */
 int main(int argc, char **argv)
 {
+
 	int file_from = open(argv[1], O_RDONLY),
 		file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC,
 					   S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP),
@@ -68,21 +53,37 @@ int main(int argc, char **argv)
 	}
 
 	if (file_from == -1)
-		reading_err(argv[1], -1, -1);
+	{
+		reading_err(argv[1]);
+		exit(98);
+	}
 
 	if (file_to == -1)
-		writing_err(argv[2], file_from, -1);
+	{
+		writing_err(argv[2]);
+		safe_close(file_from);
+		exit(99);
+	}
 
 	read_size = read(file_from, buf, BUFF_SIZE);
 	while (read_size > 0)
 	{
 		if (write(file_to, buf, read_size) < 0)
-			writing_err(argv[2], file_from, file_to);
-
+		{
+			writing_err(argv[2]);
+			safe_close(file_from);
+			safe_close(file_to);
+			exit(99);
+		}
 		read_size = read(file_from, buf, BUFF_SIZE);
 	}
 	if (read_size == -1)
-		reading_err(argv[1], file_from, file_to);
+	{
+		reading_err(argv[1]);
+		safe_close(file_from);
+		safe_close(file_to);
+		exit(98);
+	}
 
 	return (0);
 }
