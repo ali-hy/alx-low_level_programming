@@ -10,13 +10,13 @@ void safe_close(int fd1, int fd2)
 	if (fd1 > -1)
 		if (close(fd1) == -1)
 		{
-			dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd1);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
 			exit(100);
 		}
 	if (fd2 > -1)
 		if (close(fd2) == -1)
 		{
-			dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", fd2);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 			exit(100);
 		}
 }
@@ -29,7 +29,7 @@ void safe_close(int fd1, int fd2)
  */
 void reading_err(char *file_name, int fd1, int fd2)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", file_name);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_name);
 	safe_close(fd1, fd2);
 	exit(98);
 }
@@ -42,7 +42,7 @@ void reading_err(char *file_name, int fd1, int fd2)
  */
 void writing_err(char *file_name, int fd1, int fd2)
 {
-	dprintf(STDOUT_FILENO, "Error: Can't write to file %s\n", file_name);
+	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
 	safe_close(fd1, fd2);
 	exit(99);
 }
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
