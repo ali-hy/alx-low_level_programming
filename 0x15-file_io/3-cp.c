@@ -66,7 +66,6 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 	if (file_from == -1)
 		reading_err(argv[1], -1, -1);
 
