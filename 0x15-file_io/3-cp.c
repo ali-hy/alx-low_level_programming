@@ -73,13 +73,15 @@ int main(int argc, char **argv)
 		writing_err(argv[2], file_from, -1);
 
 	read_size = read(file_from, buf, BUFF_SIZE);
-	while (read_size > 0)
+	while (read_size == BUFF_SIZE)
 	{
 		if (write(file_to, buf, read_size) < 0)
 			writing_err(argv[2], file_from, file_to);
 
 		read_size = read(file_from, buf, BUFF_SIZE);
 	}
+	if (read_size > 0 && write(file_to, buf, read_size) < 0)
+		writing_err(argv[2], file_from, file_to);
 	if (read_size == -1)
 		reading_err(argv[1], file_from, file_to);
 
