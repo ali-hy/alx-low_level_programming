@@ -69,6 +69,7 @@ int main(int argc, char **argv)
 
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC,
 				   S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
+
 	if (file_to == -1)
 		writing_err(argv[2], file_from, -1);
 
