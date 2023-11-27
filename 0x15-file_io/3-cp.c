@@ -1,25 +1,6 @@
 #include "main.h"
 
 /**
- * open_keep_perms - opena file without changing its umask if it already exists
- * @file_name: name of the file to be opened
- * Return: the file descriptor for the file
- */
-int open_keep_perms(char *file_name)
-{
-	int fd;
-
-	fd = open(file_name, O_EXCL | O_CREAT | O_TRUNC | O_WRONLY,
-			  S_IRWXU | S_IRWXG | S_IRWXO);
-
-	if (fd == -1)
-		fd = open(file_name, O_CREAT | O_TRUNC | O_WRONLY,
-				  S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
-
-	return (fd);
-}
-
-/**
  * safe_close - close file descriptor, but exit program if failed
  * @fd1: first file descriptor
  * @fd2: second file descriptor
@@ -61,7 +42,7 @@ void reading_err(char *file_name, int fd1, int fd2)
  */
 void writing_err(char *file_name, int fd1, int fd2)
 {
-	dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_name);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_name);
 	safe_close(fd1, fd2);
 	exit(99);
 }
@@ -87,7 +68,8 @@ int main(int argc, char **argv)
 	if (file_from == -1)
 		reading_err(argv[1], -1, -1);
 
-	file_to = open_keep_perms(argv[1]);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC,
+				   S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
 
 	if (file_to == -1)
 		writing_err(argv[2], file_from, -1);
