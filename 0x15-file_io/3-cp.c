@@ -87,8 +87,7 @@ int main(int argc, char **argv)
 	if (file_from == -1)
 		reading_err(argv[1], -1, -1);
 
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC,
-				   S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
+	file_to = open_keep_perms(argv[1]);
 
 	if (file_to == -1)
 		writing_err(argv[2], file_from, -1);
