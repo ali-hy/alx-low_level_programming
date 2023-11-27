@@ -1,19 +1,22 @@
 #include "main.h"
 
 /**
- * _strcmp - compares two strings
- * @str1: ...
- * @str2: ...
- * Return: 0 if they're equal, else any other number
+ * open_keep_perms - opena file without changing its umask if it already exists
+ * @file_name: name of the file to be opened
+ * Return: the file descriptor for the file
  */
-int _strcmp(const char *str1, const char *str2)
+int open_keep_perms(char *file_name)
 {
-	while (*str1 && (*str1 == *str2))
-	{
-		str1++;
-		str2++;
-	}
-	return (*(const unsigned char *)str1 - *(const unsigned char *)str2);
+	int fd;
+
+	fd = open(file_name, O_EXCL | O_CREAT | O_TRUNC | O_WRONLY,
+			  S_IRWXU | S_IRWXG | S_IRWXO);
+
+	if (fd == -1)
+		fd = open(file_name, O_CREAT | O_TRUNC | O_WRONLY,
+				  S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
+
+	return (fd);
 }
 
 /**
@@ -80,9 +83,6 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	if (_strcmp(argv[1], argv[2]) == 0)
-		exit(0);
 
 	if (file_from == -1)
 		reading_err(argv[1], -1, -1);
