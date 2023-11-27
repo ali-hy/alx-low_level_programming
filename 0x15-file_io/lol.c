@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 
 		read_size = read(file_from, buf, BUFF_SIZE);
 	}
-	if (write(file_to, buf, read_size) < 0)
+	if (read_size > 0 && write(file_to, buf, read_size) < 0)
 		writing_err(argv[2], file_from, file_to);
 	if (read_size == -1)
 		reading_err(argv[1], file_from, file_to);

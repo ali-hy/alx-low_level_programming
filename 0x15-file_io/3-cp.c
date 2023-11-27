@@ -56,9 +56,7 @@ void writing_err(char *file_name, int fd1, int fd2)
 int main(int argc, char **argv)
 {
 	int file_from = open(argv[1], O_RDONLY),
-		file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC,
-					   S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP),
-		read_size;
+		file_to, read_size;
 	char buf[BUFF_SIZE];
 
 	if (argc != 3)
@@ -69,6 +67,8 @@ int main(int argc, char **argv)
 	if (file_from == -1)
 		reading_err(argv[1], -1, -1);
 
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC,
+				   S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
 	if (file_to == -1)
 		writing_err(argv[2], file_from, -1);
 
