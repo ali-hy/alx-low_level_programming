@@ -86,5 +86,6 @@ int main(int argc, char **argv)
 	if (read_size == -1)
 		reading_err(argv[1], file_from, file_to);
 
+	safe_close(file_from, file_to);
 	return (0);
 }
