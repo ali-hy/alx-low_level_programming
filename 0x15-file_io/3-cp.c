@@ -1,6 +1,22 @@
 #include "main.h"
 
 /**
+ * _strcmp - compares two strings
+ * @str1: ...
+ * @str2: ...
+ * Return: 0 if they're equal, else any other number
+ */
+int _strcmp(const char *str1, const char *str2)
+{
+	while (*str1 && (*str1 == *str2))
+	{
+		str1++;
+		str2++;
+	}
+	return (*(const unsigned char *)str1 - *(const unsigned char *)str2);
+}
+
+/**
  * safe_close - close file descriptor, but exit program if failed
  * @fd1: first file descriptor
  * @fd2: second file descriptor
@@ -64,6 +80,10 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
+
+	if (_strcmp(argv[1], argv[2]) == 0)
+		exit(0);
+
 	if (file_from == -1)
 		reading_err(argv[1], -1, -1);
 
@@ -78,7 +98,6 @@ int main(int argc, char **argv)
 	{
 		if (write(file_to, buf, read_size) < 0)
 			writing_err(argv[2], file_from, file_to);
-
 		read_size = read(file_from, buf, BUFF_SIZE);
 	}
 	if (read_size > 0 && write(file_to, buf, read_size) < 0)
