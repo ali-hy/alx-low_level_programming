@@ -12,8 +12,9 @@ int main(void)
 {
 	hash_table_t *ht;
 
-	ht = hash_table_create(1024);
-	hash_table_print(ht);
+	ht = hash_table_create(0);
+	(void)ht;
+	/* hash_table_print(ht);
 	hash_table_set(ht, "c", "fun");
 	hash_table_set(ht, "python", "awesome");
 	hash_table_set(ht, "Bob", "and Kris love asm");
@@ -23,7 +24,7 @@ int main(void)
 	hash_table_set(ht, "98", "Battery Street");
 	hash_table_set(ht, "mentioner", "yeah, we did it");
 	hash_table_set(ht, "hetairas", "let's seeee");
-	hash_table_set(ht, "hetairas", "finally");
-	hash_table_print(ht);
+	hash_table_set(ht, "hetairas", "finally")
+	hash_table_print(ht); */
 	return (EXIT_SUCCESS);
 }
