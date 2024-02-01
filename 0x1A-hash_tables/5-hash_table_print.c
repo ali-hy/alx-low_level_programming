@@ -6,8 +6,8 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned long int i = 0, first = 1;
-	hash_node_t *curr = NULL;
+	unsigned long int i, count = 0;
+	hash_node_t *node;
 
 	if (ht == NULL)
 		return;
@@ -15,16 +15,17 @@ void hash_table_print(const hash_table_t *ht)
 	printf("{");
 	for (i = 0; i < ht->size; i++)
 	{
-		curr = ht->array[i];
-		while (curr)
+		if (ht->array[i] != NULL)
 		{
-			if (first)
-				first = 0;
-			else
-				printf(", ");
-			printf("'%s':'%s'", curr->key, curr->value);
-
-			curr = curr->next;
+			node = ht->array[i];
+			while (node != NULL)
+			{
+				if (count > 0)
+					printf(", ");
+				printf("'%s': '%s'", node->key, node->value);
+				node = node->next;
+				count++;
+			}
 		}
 	}
 
