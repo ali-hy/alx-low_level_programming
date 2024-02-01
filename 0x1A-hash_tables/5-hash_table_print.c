@@ -19,12 +19,10 @@ void hash_table_print(const hash_table_t *ht)
 		while (curr)
 		{
 			if (first)
-			{
-				printf("'%s':'%s'", curr->key, curr->value);
 				first = 0;
-			}
 			else
-				printf(", '%s':'%s'", curr->key, curr->value);
+				printf(", ");
+			printf("'%s':'%s'", curr->key, curr->value);
 
 			curr = curr->next;
 		}
