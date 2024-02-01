@@ -1,4 +1,4 @@
-#include "main.h"
+#include "hash_tables.h"
 
 /**
  * key_index - get the index of a key within a certain size
