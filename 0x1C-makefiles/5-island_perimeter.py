@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''solve island perimeter interview question'''
 
+
 def island_perimeter(grid):
     '''returns the perimeter of the island described in grid'''
     pos = None
@@ -50,7 +51,7 @@ def island_perimeter(grid):
             else:
                 res += 1
 
-    return res;
+    return res
 
 if __name__ == '__main__':
     grid =[
