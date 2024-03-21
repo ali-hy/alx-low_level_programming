@@ -21,7 +21,7 @@ def island_perimeter(grid):
 
     res = 0
     visited = set()
-    s = [pos]
+    s = [start]
     while len(s):
         pos = s.pop()
         r, c = pos
