@@ -4,19 +4,19 @@
 
 def island_perimeter(grid):
     '''returns the perimeter of the island described in grid'''
-    pos = None
+    start = None
     ROWS = len(grid)
     COLS = len(grid[0])
 
     for r, row in enumerate(grid):
         for c, val in enumerate(row):
             if val:
-                pos = (r, c)
+                start = (r, c)
                 break
-        if pos is not None:
+        if start is not None:
             break
 
-    if pos is None:
+    if start is None:
         return 0
 
     res = 0
@@ -54,12 +54,12 @@ def island_perimeter(grid):
     return res
 
 
-# if __name__ == '__main__':
-#     grid = [
-#         [0, 1, 0, 0, 0, 1],
-#         [1, 1, 0, 0, 0, 1],
-#         [1, 1, 0, 1, 1, 1],
-#         [0, 1, 1, 1, 0, 0],
-#         [0, 0, 1, 1, 0, 0]
-#     ]
-#     print(island_perimeter(grid))
+if __name__ == '__main__':
+    grid = [
+        [0, 1, 0, 0, 0, 1],
+        [1, 1, 0, 0, 0, 1],
+        [1, 1, 0, 1, 1, 1],
+        [0, 1, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0]
+    ]
+    print(island_perimeter(grid))
