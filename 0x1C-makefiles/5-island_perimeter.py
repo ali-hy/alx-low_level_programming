@@ -30,23 +30,23 @@ def island_perimeter(grid):
             continue
         visited.add(pos)
 
-        if r-1 >= 0 and (r-1, c) not in visited:
-            if grid[r-1][c]:
+        if (r-1, c) not in visited:
+            if r-1 >= 0 and grid[r-1][c]:
                 s.append((r-1, c))
             else:
                 res += 1
-        if r+1 < ROWS and (r+1, c) not in visited:
-            if grid[r+1][c]:
+        if (r+1, c) not in visited:
+            if r+1 < ROWS and grid[r+1][c]:
                 s.append((r+1, c))
             else:
                 res += 1
-        if c-1 >= 0 and (r, c-1) not in visited:
-            if grid[r][c-1]:
+        if (r, c-1) not in visited:
+            if c-1 >= 0 and grid[r][c-1]:
                 s.append((r, c-1))
             else:
                 res += 1
-        if c+1 < COLS and (r, c+1) not in visited:
-            if grid[r][c+1]:
+        if (r, c+1) not in visited:
+            if c+1 < COLS and grid[r][c+1]:
                 s.append((r, c+1))
             else:
                 res += 1
