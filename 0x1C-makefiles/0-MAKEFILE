@@ -1,6 +1,2 @@
-CC = gcc
-SRC = school.c
-BIN = $(SRC:%.c=%)
-
 all:
-	$(CC) main.c $(SRC) -o $(BIN)
+	gcc main.c school.c -o school
