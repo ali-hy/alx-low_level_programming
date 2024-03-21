@@ -10,6 +10,8 @@ def island_perimeter(grid):
             if val:
                 pos = (r, c)
                 break
+        if pos is not None:
+            break
 
     if pos is None:
         return 0
@@ -21,6 +23,8 @@ def island_perimeter(grid):
         pos = s.pop()
         r, c = pos
 
+        if pos in visited:
+            continue
         visited.add(pos)
 
         if (r-1, c) not in visited:
@@ -49,8 +53,8 @@ def island_perimeter(grid):
 if __name__ == '__main__':
     grid = [
         [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 0, 0],
+        [0, 0, 1, 1, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0]
     ]
